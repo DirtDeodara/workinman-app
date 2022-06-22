@@ -1,0 +1,8 @@
+.app {
+  position: relative;
+}
+.background {
+  position: absolute;
+  width: 100vw; /* TODO this might not be best. expecially if other images dont scale with it*/
+  height: 100vh;
+}
