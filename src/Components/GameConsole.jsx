@@ -13,7 +13,7 @@ const GameGonsole = () => {
   console.log(numOfCorrectAnswers)
 
   const whatToShow = () => {
-    if (numOfCorrectAnswers >= 27) {
+    if (numOfCorrectAnswers >= 27 ) {
       return (
         <div className="finished">
           <Finished />
