@@ -13,9 +13,11 @@ const useGameState = () => {
   }, [numOfCorrectAnswers])
 
   const partsOfEquation = useMemo(() => {
-    const factor = Math.floor((numOfCorrectAnswers % 9) / (3 * level))
-    const max = (1 + factor) * 10
-    const min = factor * 10
+    const factor = Math.floor((numOfCorrectAnswers % 9) / 3)
+    const scale = level < 2 ? 1 : 0
+    const min = 0
+    const max = (scale + factor) * 9
+    console.log(min, max)
     const a = Math.ceil(Math.random() * (max - min) + min)
     const b = Math.ceil(Math.random() * (max - min) + min)
     let operator
@@ -25,13 +27,10 @@ const useGameState = () => {
         break
       case 2:
         operator = "-"
-
         break
       case 3:
         operator = "*"
-
         break
-
       default:
         break
     }
@@ -65,7 +64,7 @@ const useGameState = () => {
     const hasAdvancedLevel = (numOfCorrectAnswers + 1) % 9 === 0
     const timeout = hasAdvancedLevel ? 2000 : 1000
 
-    const handleCorrect = () => {
+    const handleCorrectAnswer = () => {
       setIsCorrect(true)
       numOfCorrectAnswers > 0 && hasAdvancedLevel
         ? setShouldPraise(true)
@@ -80,7 +79,7 @@ const useGameState = () => {
       }, timeout)
     }
 
-    const handleIncorrect = () => {
+    const handleIncorrectAnswer = () => {
       setIsCorrect(false)
 
       setTimeout(() => {
@@ -90,9 +89,9 @@ const useGameState = () => {
     }
 
     if (parseInt(userAnswer) === result) {
-      handleCorrect()
+      handleCorrectAnswer()
     } else {
-      handleIncorrect()
+      handleIncorrectAnswer()
     }
   }
 
