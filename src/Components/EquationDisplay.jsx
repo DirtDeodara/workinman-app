@@ -10,16 +10,16 @@ const EquationDisplay = () => {
   const aToDisplay = a
     .toString()
     .split("")
-    .map((number) => generateIcons(number))
+    .map((number, i) => generateIcons(number, i))
 
   const bToDisplay = b
     .toString()
     .split("")
-    .map((number) => generateIcons(number))
+    .map((number, i) => generateIcons(number, i))
 
   const answerToDisplay = userAnswer
     .split("")
-    .map((number) => generateIcons(number))
+    .map((number, i) => generateIcons(number, i))
 
   return (
     <div className="equationContainer">

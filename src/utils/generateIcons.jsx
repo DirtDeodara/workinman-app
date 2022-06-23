@@ -11,32 +11,32 @@ import { ReactComponent as Zero } from "../assets/0.svg"
 import { ReactComponent as Plus } from "../assets/plus.svg"
 import { ReactComponent as Minus } from "../assets/minus.svg"
 
-const generateIcons = (value) => {
+const generateIcons = (value, i) => {
   switch (value) {
     case "1":
-      return <One />
+      return <One key={`${value}${i}`} />
     case "2":
-      return <Two />
+      return <Two key={`${value}${i}`} />
     case "3":
-      return <Three />
+      return <Three key={`${value}${i}`} />
     case "4":
-      return <Four />
+      return <Four key={`${value}${i}`} />
     case "5":
-      return <Five />
+      return <Five key={`${value}${i}`} />
     case "6":
-      return <Six />
+      return <Six key={`${value}${i}`} />
     case "7":
-      return <Seven />
+      return <Seven key={`${value}${i}`} />
     case "8":
-      return <Eight />
+      return <Eight key={`${value}${i}`} />
     case "9":
-      return <Nine />
+      return <Nine key={`${value}${i}`} />
     case "0":
-      return <Zero />
+      return <Zero key={`${value}${i}`} />
     case "+":
-      return <Plus />
+      return <Plus key={`${value}${i}`} />
     case "-":
-      return <Minus />
+      return <Minus key={`${value}${i}`} />
     default:
       return null
   }

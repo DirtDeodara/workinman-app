@@ -20,7 +20,7 @@ const LevelDisplay = () => {
         break
     }
   }
-
+  
   return (
     <div className="level-container">
       <Level className="text"/>

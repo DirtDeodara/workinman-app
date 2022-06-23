@@ -14,6 +14,7 @@ const initalContext = {
   isCorrect: false,
   hasSubmitted: false,
   level: 1,
+  shouldPraise: false
 }
 
 const AppContext = createContext(initalContext)

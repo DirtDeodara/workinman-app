@@ -5,6 +5,7 @@ import { numberButtonIconMap } from "../utils/numberIcons"
 import { ReactComponent as Answer } from "../assets/answer_btn.svg"
 import { ReactComponent as Correct } from "../assets/correct_btn.svg"
 import { ReactComponent as TryAgain } from "../assets/try_again_btn.svg"
+import { ReactComponent as Clear } from "../assets/clear_btn.svg"
 import { useAppContext } from "../stores/AppProvider"
 
 const NumbersPad = () => {
@@ -15,6 +16,7 @@ const NumbersPad = () => {
 
   const numberBtnsRef = useRef([])
   const answerBtnRef = useRef()
+  const clearBtnRef = useRef()
 
   const handleBtnGrow = (ref) => {
     gsap.to(ref, { scale: "1.1", ease: "back" })
@@ -39,23 +41,26 @@ const NumbersPad = () => {
 
   return (
     <div className="numPadContainer">
-      <button
-        className="answerBtn"
-        disabled={hasSubmitted}
-        onClick={() => evaluateUserAnswer()}
-        ref={answerBtnRef}
-        onMouseEnter={() => handleBtnGrow(answerBtnRef.current)}
-        onMouseLeave={() => handleBtnShrink(answerBtnRef.current)}
-      >
-        {hasSubmitted && isCorrect ? (
-          <Correct />
-        ) : hasSubmitted && !isCorrect ? (
-          <TryAgain />
-        ) : (
-          <Answer />
-        )}
-      </button>
-      <div className="flexbox">
+      <div className="actionBtns">
+        <button
+          className="answerBtn"
+          disabled={hasSubmitted}
+          onClick={() => evaluateUserAnswer()}
+          ref={answerBtnRef}
+          onMouseEnter={() => handleBtnGrow(answerBtnRef.current)}
+          onMouseLeave={() => handleBtnShrink(answerBtnRef.current)}
+        >
+          {hasSubmitted && isCorrect ? (
+            <Correct />
+          ) : hasSubmitted && !isCorrect ? (
+            <TryAgain />
+          ) : (
+            <Answer />
+          )}
+        </button>
+      </div>
+
+      <div className="numbers">
         {numberIconArray.map(([key, value], i) => {
           const Icon = value.icon
           const number = value.number
@@ -73,6 +78,16 @@ const NumbersPad = () => {
             </button>
           )
         })}
+        <button
+          className="clearBtn"
+          disabled={hasSubmitted}
+          onClick={() => setUserAnswer("")}
+          ref={clearBtnRef}
+          onMouseEnter={() => handleBtnGrow(clearBtnRef.current)}
+          onMouseLeave={() => handleBtnShrink(clearBtnRef.current)}
+        >
+          <Clear />
+        </button>
       </div>
     </div>
   )

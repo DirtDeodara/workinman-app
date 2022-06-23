@@ -1,8 +1,10 @@
 .app {
-  position: relative;
+  background: url("./assets/space-background.jpg");
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
 .background {
-  position: absolute;
-  width: 100vw; /* TODO this might not be best. expecially if other images dont scale with it*/
+  width: 100vw;
   height: 100vh;
 }

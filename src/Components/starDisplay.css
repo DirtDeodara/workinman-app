@@ -1,13 +1,8 @@
 .starContainer {
-    position: absolute;
-    top: 5vh;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
     width: max-content;
 }
 
 .star {
-    width: 100px;
+    width: 80px;
     margin: 0 40px;
 }

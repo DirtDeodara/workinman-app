@@ -8,7 +8,7 @@ import { ReactComponent as HollowStar } from "../assets/hollow_star.svg"
 import { useAppContext } from "../stores/AppProvider"
 
 const StarDisplay = () => {
-  const { numOfCorrectAnswers, hasSubmitted, isCorrect, level } =
+  const { numOfCorrectAnswers, hasSubmitted, isCorrect } =
     useAppContext()
 
   const firstStarRef = useRef()
