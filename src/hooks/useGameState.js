@@ -1,27 +1,32 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 
-const useEquation = () => {
+const useGameState = () => {
   const [userAnswer, setUserAnswer] = useState("")
   const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0)
   const [isCorrect, setIsCorrect] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [level, setLevel] = useState(1)
 
-  console.log("numOfCorrectAnswers:", numOfCorrectAnswers)
+  useEffect(() => {
+    setLevel(Math.floor(1 + numOfCorrectAnswers / 9))
+  }, [numOfCorrectAnswers])
+
+  console.log(level)
 
   const partsOfEquation = useMemo(() => {
-    const level = Math.floor(numOfCorrectAnswers / 3)
-    const max = (1 + level) * 10
-    const min = level * 10
+    const stage = Math.floor(numOfCorrectAnswers / 3)
+    const max = (1 + stage) * 10
+    const min = stage * 10
     const a = Math.ceil(Math.random() * (max - min) + min)
     const b = Math.ceil(Math.random() * (max - min) + min)
-    const operator = true ? "+" : "-"
+    const operator = level === 1 ? "+" : "-"
 
     return {
       a,
       b,
       operator,
     }
-  }, [numOfCorrectAnswers])
+  }, [level, numOfCorrectAnswers])
 
   const evaluateUserAnswer = () => {
     setHasSubmitted(true)
@@ -46,14 +51,13 @@ const useEquation = () => {
         setUserAnswer("")
         setHasSubmitted(false)
         setIsCorrect(false)
-      }, 2000)
+      }, 1000)
     } else {
-      setHasSubmitted(true)
       setIsCorrect(false)
       setTimeout(() => {
         setUserAnswer("")
         setHasSubmitted(false)
-      }, 2000)
+      }, 1000)
     }
   }
 
@@ -65,7 +69,8 @@ const useEquation = () => {
     numOfCorrectAnswers,
     isCorrect,
     hasSubmitted,
+    level
   }
 }
 
-export default useEquation
+export default useGameState

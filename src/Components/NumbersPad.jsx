@@ -10,13 +10,32 @@ import { useAppContext } from "../stores/AppProvider"
 const NumbersPad = () => {
   const { setUserAnswer, evaluateUserAnswer, hasSubmitted, isCorrect } =
     useAppContext()
+
   const numberIconArray = Object.entries(numberButtonIconMap)
 
+  const numberBtnsRef = useRef([])
   const answerBtnRef = useRef()
 
+  const handleBtnGrow = (ref) => {
+    gsap.to(ref, { scale: "1.1", ease: "back" })
+  }
+
+  const handleBtnShrink = (ref) => {
+    gsap.to(ref, { scale: "1", ease: "back" })
+  }
+
+  const handleUserAnswer = (answer) => {
+    setUserAnswer((prevState) => {
+      return prevState + answer
+    })
+  }
+
   useEffect(() => {
-    gsap.to(answerBtnRef, { rotation: "+=360" })
-  })
+    numberBtnsRef.current = numberBtnsRef.current.slice(
+      0,
+      numberIconArray.length
+    )
+  }, [numberIconArray.length])
 
   return (
     <div className="numPadContainer">
@@ -24,7 +43,9 @@ const NumbersPad = () => {
         className="answerBtn"
         disabled={hasSubmitted}
         onClick={() => evaluateUserAnswer()}
-        ref={answerBtnRef.current}
+        ref={answerBtnRef}
+        onMouseEnter={() => handleBtnGrow(answerBtnRef.current)}
+        onMouseLeave={() => handleBtnShrink(answerBtnRef.current)}
       >
         {hasSubmitted && isCorrect ? (
           <Correct />
@@ -42,11 +63,11 @@ const NumbersPad = () => {
             <button
               key={i}
               className="numBtn"
-              onClick={() => {
-                setUserAnswer((prevState) => {
-                  return prevState + number
-                })
-              }}
+              disabled={hasSubmitted}
+              onClick={() => handleUserAnswer(number)}
+              ref={(el) => (numberBtnsRef.current[i] = el)}
+              onMouseEnter={() => handleBtnGrow(numberBtnsRef.current[i])}
+              onMouseLeave={() => handleBtnShrink(numberBtnsRef.current[i])}
             >
               <Icon />
             </button>

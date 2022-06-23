@@ -1,5 +1,5 @@
 import { useContext, createContext } from "react"
-import useEquation from "../hooks/useEquation"
+import useGameState from "../hooks/useGameState"
 
 const initalContext = {
   userAnswer: "",
@@ -13,12 +13,13 @@ const initalContext = {
   numOfCorrectAnswers: 0,
   isCorrect: false,
   hasSubmitted: false,
+  level: 1,
 }
 
 const AppContext = createContext(initalContext)
 
 const AppProvider = ({ children }) => {
-  const equationContext = useEquation()
+  const equationContext = useGameState()
 
   return (
     <AppContext.Provider value={{ ...equationContext }}>

@@ -1,0 +1,13 @@
+.level-container {
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    display: flex;
+    width: max-content;
+}
+
+.text {
+    display: flex;
+    height: 100px;
+    margin: 0 10px;
+}
