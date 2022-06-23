@@ -10,7 +10,6 @@ import PraiseDisplay from "./PraiseDisplay"
 
 const GameGonsole = () => {
   const { shouldPraise, numOfCorrectAnswers } = useAppContext()
-  console.log(numOfCorrectAnswers)
 
   const whatToShow = () => {
     if (numOfCorrectAnswers >= 27 ) {

@@ -10,11 +10,6 @@ import { ReactComponent as Nine } from "../assets/9_btn.svg"
 import { ReactComponent as Zero } from "../assets/0_btn.svg"
 import { ReactComponent as Minus } from "../assets/minus_btn.svg"
 
-// type Icon = {
-//     icon: any
-//     number: number
-// }
-
 const numberButtonIconMap = {
   num1: { icon: One, number: 1 },
   num2: { icon: Two, number: 2 },
@@ -30,4 +25,3 @@ const numberButtonIconMap = {
 }
 
 export { numberButtonIconMap }
-// export type { Icon }
