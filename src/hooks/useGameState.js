@@ -18,7 +18,23 @@ const useGameState = () => {
     const min = factor * 10
     const a = Math.ceil(Math.random() * (max - min) + min)
     const b = Math.ceil(Math.random() * (max - min) + min)
-    const operator = level === 1 ? "+" : "-"
+    let operator
+    switch (level) {
+      case 1:
+        operator = "+"
+        break
+      case 2:
+        operator = "-"
+
+        break
+      case 3:
+        operator = "*"
+
+        break
+
+      default:
+        break
+    }
 
     return {
       a,
@@ -38,6 +54,9 @@ const useGameState = () => {
         break
       case "-":
         result = a - b
+        break
+      case "*":
+        result = a * b
         break
       default:
         break

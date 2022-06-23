@@ -10,6 +10,7 @@ import { ReactComponent as Nine } from "../assets/9.svg"
 import { ReactComponent as Zero } from "../assets/0.svg"
 import { ReactComponent as Plus } from "../assets/plus.svg"
 import { ReactComponent as Minus } from "../assets/minus.svg"
+import { ReactComponent as Multiply } from "../assets/multiply.svg"
 
 const generateIcons = (value, i) => {
   switch (value) {
@@ -37,6 +38,8 @@ const generateIcons = (value, i) => {
       return <Plus key={`${value}${i}`} />
     case "-":
       return <Minus key={`${value}${i}`} />
+    case "*":
+      return <Multiply key={`${value}${i}`} />
     default:
       return null
   }
