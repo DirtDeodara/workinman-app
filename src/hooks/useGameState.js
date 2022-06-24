@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react"
 
 const useGameState = () => {
   const [userAnswer, setUserAnswer] = useState("")
-  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(27)
+  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0)
   const [isCorrect, setIsCorrect] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [level, setLevel] = useState(1)
