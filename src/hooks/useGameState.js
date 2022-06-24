@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react"
 
 const useGameState = () => {
   const [userAnswer, setUserAnswer] = useState("")
-  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0)
+  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(9)
   const [isCorrect, setIsCorrect] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [level, setLevel] = useState(1)
@@ -14,10 +14,10 @@ const useGameState = () => {
 
   const partsOfEquation = useMemo(() => {
     const factor = Math.floor((numOfCorrectAnswers % 9) / 3)
-    const scale = level < 2 ? 1 : 0
+    const scale = level <= 2 ? 1 : .5
     const min = 0
     const max = (scale + factor) * 9
-    console.log(min, max)
+
     const a = Math.ceil(Math.random() * (max - min) + min)
     const b = Math.ceil(Math.random() * (max - min) + min)
     let operator
