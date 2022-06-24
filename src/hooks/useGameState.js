@@ -14,12 +14,12 @@ const useGameState = () => {
 
   const partsOfEquation = useMemo(() => {
     const factor = Math.floor((numOfCorrectAnswers % 9) / 3)
-    const scale = level <= 2 ? 1 : .5
-    const min = 0
+    const scale = level <= 2 ? 1 : 0.5
+    const min = factor * 9
     const max = (scale + factor) * 9
 
     const a = Math.ceil(Math.random() * (max - min) + min)
-    const b = Math.ceil(Math.random() * (max - min) + min)
+    const b = Math.ceil(Math.random() * (max - min) + 0)
     let operator
     switch (level) {
       case 1:
