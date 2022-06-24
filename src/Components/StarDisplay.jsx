@@ -8,8 +8,7 @@ import { ReactComponent as HollowStar } from "../assets/hollow_star.svg"
 import { useAppContext } from "../stores/AppProvider"
 
 const StarDisplay = () => {
-  const { numOfCorrectAnswers, hasSubmitted, isCorrect } =
-    useAppContext()
+  const { numOfCorrectAnswers } = useAppContext()
 
   const firstStarRef = useRef()
   const secondStarRef = useRef()
@@ -20,10 +19,10 @@ const StarDisplay = () => {
   }, [])
 
   useEffect(() => {
-    refs.forEach((ref, i) => {
+    refs.forEach((ref) => {
       return gsap.to(ref.current, { rotate: 720 })
     })
-  }, [hasSubmitted, isCorrect, refs])
+  }, [refs])
 
   const starCount = numOfCorrectAnswers % 9
 

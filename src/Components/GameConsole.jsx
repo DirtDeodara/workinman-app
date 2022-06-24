@@ -1,4 +1,6 @@
 import "./gameConsole.css"
+import { useRef, useEffect } from "react"
+import { gsap } from "gsap"
 import EquationDisplay from "./EquationDisplay"
 import NumbersPad from "./NumbersPad"
 import StarDisplay from "./StarDisplay"
@@ -11,10 +13,22 @@ import PraiseDisplay from "./PraiseDisplay"
 const GameGonsole = () => {
   const { shouldPraise, numOfCorrectAnswers } = useAppContext()
 
+  const praiseRef = useRef()
+
+  useEffect(() => {
+    if (numOfCorrectAnswers >= 27) {
+      gsap.fromTo(
+        praiseRef.current,
+        { scale: 0 },
+        { delay: .5, duration: 4, scale: 1, ease: "elastic" }
+      )
+    }
+  }, [numOfCorrectAnswers])
+
   const whatToShow = () => {
-    if (numOfCorrectAnswers >= 27 ) {
+    if (numOfCorrectAnswers >= 27) {
       return (
-        <div className="finished">
+        <div ref={praiseRef} className="finished">
           <Finished />
         </div>
       )

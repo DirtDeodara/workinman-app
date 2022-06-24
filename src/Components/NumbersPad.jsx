@@ -1,7 +1,7 @@
 import "./numbersPad.css"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { numberButtonIconMap } from "../utils/numberIcons"
+import { numberButtonIconMap } from "../utils/numberIconsMap"
 import { ReactComponent as Answer } from "../assets/answer_btn.svg"
 import { ReactComponent as Correct } from "../assets/correct_btn.svg"
 import { ReactComponent as TryAgain } from "../assets/try_again_btn.svg"
@@ -19,11 +19,11 @@ const NumbersPad = () => {
   const clearBtnRef = useRef()
 
   const handleBtnGrow = (ref) => {
-    gsap.to(ref, { scale: "1.1", ease: "back" })
+    gsap.to(ref, { scale: "1.1" }) 
   }
 
   const handleBtnShrink = (ref) => {
-    gsap.to(ref, { scale: "1", ease: "back" })
+    gsap.to(ref, { scale: "1", ease: "bounce" })
   }
 
   const handleUserAnswer = (answer) => {

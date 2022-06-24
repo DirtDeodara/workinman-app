@@ -1,8 +1,9 @@
 import "./praiseDisplay.css"
-import { ReactComponent as WellDone } from "../assets/well_done.svg"
+
+import { ReactComponent as GreatJob } from "../assets/great_job.svg"
 
 const PraiseDisplay = () => {
-  return true ? <WellDone className="praise"/> : null
+  return <GreatJob className="praise" />
 }
 
 export default PraiseDisplay
