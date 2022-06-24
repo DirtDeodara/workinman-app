@@ -1,3 +1,6 @@
+## To visit deployed site
+https://creative-trifle-e3705a.netlify.app/
+
 ## To start app locally
 In the project directory, you can run:
 ### `npm start`
