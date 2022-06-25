@@ -1,6 +1,5 @@
 import "./numbersPad.css"
 import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
 import { numberButtonIconMap } from "../utils/numberIconsMap"
 import { ReactComponent as Answer } from "../assets/answer_btn.svg"
 import { ReactComponent as Correct } from "../assets/correct_btn.svg"
