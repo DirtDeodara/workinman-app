@@ -7,6 +7,7 @@ import { ReactComponent as Correct } from "../assets/correct_btn.svg"
 import { ReactComponent as TryAgain } from "../assets/try_again_btn.svg"
 import { ReactComponent as Clear } from "../assets/clear_btn.svg"
 import { useAppContext } from "../stores/AppProvider"
+import { handleBtnGrow, handleBtnShrink } from "../utils/handleButtonAnimations"
 
 const NumbersPad = () => {
   const { setUserAnswer, evaluateUserAnswer, hasSubmitted, isCorrect } =
@@ -17,14 +18,6 @@ const NumbersPad = () => {
   const numberBtnsRef = useRef([])
   const answerBtnRef = useRef()
   const clearBtnRef = useRef()
-
-  const handleBtnGrow = (ref) => {
-    gsap.to(ref, { scale: "1.1" }) 
-  }
-
-  const handleBtnShrink = (ref) => {
-    gsap.to(ref, { scale: "1", ease: "bounce" })
-  }
 
   const handleUserAnswer = (answer) => {
     setUserAnswer((prevState) => {
@@ -61,7 +54,7 @@ const NumbersPad = () => {
       </div>
 
       <div className="numbers">
-        {numberIconArray.map(([key, value], i) => {
+        {numberIconArray.map(([_, value], i) => {
           const Icon = value.icon
           const number = value.number
           return (

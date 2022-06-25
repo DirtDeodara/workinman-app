@@ -101,6 +101,7 @@ const useGameState = () => {
     partsOfEquation,
     evaluateUserAnswer,
     numOfCorrectAnswers,
+    setNumOfCorrectAnswers,
     isCorrect,
     hasSubmitted,
     level,
